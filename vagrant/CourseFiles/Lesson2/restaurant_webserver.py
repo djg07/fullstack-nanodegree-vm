@@ -14,11 +14,12 @@ class webServerHandler(BaseHTTPRequestHandler):
 		Base.metadata.bind = engine
 		DBSession = sessionmaker(bind=engine)
 		session = DBSession()
-
+		
 		if self.path.endswith("/restaurant"):
 			self.send_response(200)
 			self.send_header('Content-type', 'text/html')
 			self.end_headers()
+
 
 			message = "<html><body>"
 			restaurants = session.query(Restaurant).all()
